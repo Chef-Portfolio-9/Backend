@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 
-const authRouter = require('authRouter');
+const authRouter = require('../router/authRouter');
 const chefRouter = require('../router/chefRouter');
 
 const restricted = require('../middleware/restricted');
