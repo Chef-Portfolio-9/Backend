@@ -49,7 +49,7 @@ router.post('/login', (req, res) => {
 		}
 	  })
 	  .catch(error => {
-		res.status(500).json({message: "There was an error logging in", error});
+		res.status(500).json({message: "There was an error logging in",   error});
 	  });
 });
 
