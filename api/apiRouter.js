@@ -1,10 +1,13 @@
 const router = require('express').Router();
 
+
 const authRouter = require('authRouter');
 const chefRouter = require('../router/chefRouter');
 
+const restricted = require('../middleware/restricted');
+
 router.use('/api/auth', authRouter)
-router.use('/api/chef_portfolio', chefRouter);
+router.use('/api/chef_portfolio', restricted, chefRouter);
 
 // Global test endpoint
 router.get('/', (req, res) => {
