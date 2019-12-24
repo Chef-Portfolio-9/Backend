@@ -1,5 +1,5 @@
 exports.up = function(knex) {
-	return knex.schema('users', tbl => {
+	return knex.schema.createTable('users', tbl => {
 		tbl.increments();
 
 		tbl
