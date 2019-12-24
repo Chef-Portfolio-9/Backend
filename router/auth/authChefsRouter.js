@@ -4,10 +4,10 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 
 // pull in signToken
-const signToken = require('../JWT/signToken');
+const signToken = require('../../JWT/signToken');
 
 //Pull in knex helper models
-const  userDb = require('../model/userDb');
+const  userDb = require('../../models/usersDb');
 
 router.post('/register', (req, res) => {
   // implement registration

@@ -1,4 +1,4 @@
-const db = require('../database/dbConfig');
+const db = require('../data/dbConfig');
 module.exports = {
 	get,
 	getBy,
