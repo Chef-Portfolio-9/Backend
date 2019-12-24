@@ -17,10 +17,12 @@ router.post('/register', (req, res) => {
 
 	user.password = hash;
 
+	const token = signToken(user.username); 
+
 	userDb
 		.add(user)
 		.then(stored => {
-			res.status(201).json(stored);
+			res.status(201).json(token, stored);
 		})
 		.catch(err => {
 			res.status(500).json(err);
