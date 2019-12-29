@@ -7,7 +7,7 @@ const bcrypt = require('bcryptjs');
 const signToken = require('../../JWT/signToken');
 
 //Pull in knex helper models
-const  userDb = require('../../models/usersDb');
+const  chefsDb = require('../../models/chefsAuthDb');
 
 router.post('/register', (req, res) => {
   // implement registration
@@ -17,12 +17,11 @@ router.post('/register', (req, res) => {
 
 	user.password = hash;
 
-	const token = signToken(user.username); 
 
-	userDb
+	chefsDb
 		.add(user)
 		.then(stored => {
-			res.status(201).json(token, stored);
+			res.status(201).json(stored);
 		})
 		.catch(err => {
 			res.status(500).json(err);
@@ -34,7 +33,7 @@ router.post('/login', (req, res) => {
   // implement login
   let { username, password } = req.body;
   
-	userDb.getBy({ username })
+	chefsDb.getBy({ username })
 	  .first()
 	  .then(user => {
 		if (user && bcrypt.compareSync(password, user.password)) {
@@ -43,8 +42,7 @@ router.post('/login', (req, res) => {
   
 		  // send the token
 		  res.status(201).json({
-			token, 
-			message: `Welcome ${user.username}!`,
+			welcome:`${user.username}!`, id: `${user.id}`, role: `${user.role_id}`, token
 		  });
 		} else {
 		  res.status(401).json({ message: "Invalid Credentials" });

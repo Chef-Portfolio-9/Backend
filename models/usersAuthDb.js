@@ -7,23 +7,23 @@ module.exports = {
 };
 
 function get() {
-	return db('chefs').select('id', 'username', 'password', 'location');
+	return db('users').select('id', 'username', 'password');
 }
 
 function getBy(username) {
-	return db('chefs')
-		.select('id', 'username', 'password', 'location')
+	return db('users')
+		.select('id', 'username', 'password')
 		.where(username);
 }
 
 function add(user) {
-	return db('chefs')
+	return db('users')
 		.insert(user, 'id')
 		.returning('id');
 }
 
 function findById(id) {
-	return db('chefs')
+	return db('users')
 		.select('id', 'username')
 		.where({ id })
 		.first();

@@ -8,8 +8,8 @@ const authUsersRouter = require('../router/auth/authUsersRouter');
 // const restricted = require('../middleware/restricted');
 const validateAuth = require('../middleware/validateAuth');
 
-router.use('/api/auth/chef', validateAuth, authChefsRouter)
-// router.use('/api/auth/users', validateAuth, authUsersRouter);
+router.use('/api/auth/chefs', validateAuth, authChefsRouter)
+router.use('/api/auth/users', validateAuth, authUsersRouter);
 
 // Global test endpoint----------------------------------
 router.get('/', (req, res) => {

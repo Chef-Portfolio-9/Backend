@@ -18,7 +18,6 @@ exports.up = function(knex) {
 		tbl
 			.integer('chef_id')
 			.unsigned()
-			.notNullable()
 			.references('id')
 			.inTable('chefs')
 			.onUpdate('CASCADE')
@@ -26,7 +25,6 @@ exports.up = function(knex) {
 		tbl
 			.integer('recipe_id')
 			.unsigned()
-			.notNullable()
 			.references('id')
 			.inTable('recipes')
 			.onUpdate('CASCADE')
