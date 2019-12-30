@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 //Pull in knex helper models
-const recipesDb = require('../../models/recipesDb');
+const recipesDb = require('../models/recipesDb');
 
 //Global GET
 router.get('/', (req, res) => {

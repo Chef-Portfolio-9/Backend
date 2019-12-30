@@ -7,7 +7,7 @@ const bcrypt = require('bcryptjs');
 const signToken = require('../../JWT/signToken');
 
 //Pull in knex helper models
-const  chefsDb = require('../../models/chefsAuthDb');
+const  chefsDb = require('../../models/authModels/chefsAuthDb');
 
 router.post('/register', (req, res) => {
   // implement registration
