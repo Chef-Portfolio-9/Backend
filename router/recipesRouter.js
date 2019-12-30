@@ -3,6 +3,10 @@ const router = require('express').Router();
 //Pull in knex helper models
 const recipesDb = require('../models/recipesDb');
 
+// Pull in Global custom middleware
+const validatePost = require('../middleware/validatePost');
+const validateId = require('../middleware/validateId');
+
 //Global GET
 router.get('/', (req, res) => {
 	recipesDb
@@ -18,7 +22,7 @@ router.get('/', (req, res) => {
 });
 
 //GET by id
-router.get('/:id', (req, res) => {
+router.get('/:id', validateId, (req, res) => {
 	const id = req.params.id;
 
 	recipesDb
@@ -34,7 +38,7 @@ router.get('/:id', (req, res) => {
 });
 
 //POST
-router.post('/', (req, res) => {
+router.post('/', validatePost,  (req, res) => {
 	const recipeData = req.body;
 	recipesDb
 		.add(recipeData)
@@ -47,7 +51,7 @@ router.post('/', (req, res) => {
 });
 
 //PUT by id
-router.put('/:id', (req, res) => {
+router.put('/:id', validatePost, validateId, (req, res) => {
 	const id = req.params.id;
 	const changes = req.body;
 
@@ -69,7 +73,7 @@ router.put('/:id', (req, res) => {
 });
 
 //DELETE by id
-router.delete('/:id', (req, res) => {
+router.delete('/:id', validateId, (req, res) => {
 	const id = req.params.id;
 
 	recipesDb
