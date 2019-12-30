@@ -69,6 +69,26 @@ router.put('/:id', (req, res) => {
 });
 
 //DELETE by id
-router.delete('/:id', (req, res) => {});
+router.delete('/:id', (req, res) => {
+	const id = req.params.id;
+
+	recipesDb
+		.getById(id)
+		.then(deletedRecipe => {
+			recipesDb
+				.remove(id, deletedRecipe)
+				.then(gone => {
+					res
+						.status(200)
+						.json({ message: `Recipe id: ${id} was deleted.`, deletedRecipe });
+				})
+				.catch(err => {
+					res.status(500).json({ message: 'Error deleting the recipe.', err });
+				});
+		})
+		.catch(err => {
+			res.status(500).json({ message: 'Error finding that recipe.', err });
+		});
+});
 
 module.exports = router;
