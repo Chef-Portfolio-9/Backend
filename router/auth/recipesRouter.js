@@ -18,21 +18,33 @@ router.get('/', (req, res) => {
 });
 
 //GET by id
-router.get('/:id', (req, res) => {});
-const id = req.params.id;
+router.get('/:id', (req, res) => {
+	const id = req.params.id;
 
-recipesDb
-	.getById(id)
-	.then(found => {
-		res.status(200).json(found);
-	})
-	.catch(err => {
-		res
-			.status(500)
-			.json({ message: 'There was an error getting that recipe.', err });
-	});
+	recipesDb
+		.getById(id)
+		.then(found => {
+			res.status(200).json(found);
+		})
+		.catch(err => {
+			res
+				.status(500)
+				.json({ message: 'There was an error getting that recipe.', err });
+		});
+});
+
 //POST
-router.post('/', (req, res) => {});
+router.post('/', (req, res) => {
+	const recipeData = req.body;
+	recipesDb
+		.add(recipeData)
+		.then(newRecipe => {
+			res.status(201).json(newRecipe);
+		})
+		.catch(err => {
+			res.status(500).json({ message: 'Error creating that recipe.', err });
+		});
+});
 
 //PUT by id
 router.put('/:id', (req, res) => {});
