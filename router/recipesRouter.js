@@ -3,9 +3,6 @@ const router = require('express').Router();
 //Pull in knex helper models
 const recipesDb = require('../models/recipesDb');
 
-// Pull in Global custom middleware
-const validatePost = require('../middleware/validatePost');
-const validateId = require('../middleware/validateId');
 
 //Global GET
 router.get('/', (req, res) => {
@@ -38,7 +35,7 @@ router.get('/:id', validateId, (req, res) => {
 });
 
 //POST
-router.post('/', validatePost,  (req, res) => {
+router.post('/', validatePost, (req, res) => {
 	const recipeData = req.body;
 	recipesDb
 		.add(recipeData)
@@ -51,25 +48,31 @@ router.post('/', validatePost,  (req, res) => {
 });
 
 //PUT by id
-router.put('/:id', validatePost, validateId, (req, res) => {
+router.put('/:id', validateId, (req, res) => {
 	const id = req.params.id;
 	const changes = req.body;
 
-	recipesDb
-		.getById(id)
-		.then(found => {
-			recipesDb
-				.update(id, changes)
-				.then(recipeUpdate => {
-					res.status(200).json(recipeUpdate);
-				})
-				.catch(err => {
-					res.status(500).json({ message: 'Error updating that recipe!', err });
-				});
-		})
-		.catch(err => {
-			res.status(500).json({ message: ' Error finding that recipe!', err });
-		});
+	if (!changes) {
+		res.status(400).json({ message: 'Please submit a change to the recipe.' });
+	} else {
+		recipesDb
+			.getById(id)
+			.then(found => {
+				recipesDb
+					.update(id, changes)
+					.then(recipeUpdate => {
+						res.status(200).json(recipeUpdate);
+					})
+					.catch(err => {
+						res
+							.status(500)
+							.json({ message: 'Error updating that recipe!', err });
+					});
+			})
+			.catch(err => {
+				res.status(500).json({ message: ' Error finding that recipe!', err });
+			});
+	}
 });
 
 //DELETE by id
@@ -94,5 +97,31 @@ router.delete('/:id', validateId, (req, res) => {
 			res.status(500).json({ message: 'Error finding that recipe.', err });
 		});
 });
+
+// Custom middleware
+
+function validateId(req, res, next) {
+	const id = req.params.id;
+
+	recipesDb
+		.getById(id)
+		.then(() => {
+			next();
+		})
+		.catch(err => {
+			res.status(404).json({ message: 'Invalid recipe id!', err });
+		});
+}
+
+function validatePost(req, res, next) {
+	const post = req.body
+
+	if(!post.recipe_name && !post.chef_id) {
+		res.status(400).json({message: 'Missing needed Post data!'})
+	} else {
+		next ();
+	}
+}
+
 
 module.exports = router;
