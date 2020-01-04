@@ -21,14 +21,7 @@ exports.up = function(knex) {
 			.inTable('ingredients')
 			.onDelete('RESTRICT')
 			.onUpdate('CASCADE');
-		tbl
-			.integer('instruction_id')
-			.unsigned()
-			.notNullable()
-			.references('id')
-			.inTable('instructions')
-			.onDelete('RESTRICT')
-			.onUpdate('CASCADE');
+		
 	});
 };
 
