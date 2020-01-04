@@ -1,10 +1,10 @@
 
 exports.seed = function(knex) {
   // Deletes ALL existing entries
-  return knex('recipe_detail').truncate()
+  return knex('recipe_ingredients_detail').truncate()
     .then(function () {
       // Inserts seed entries
-      return knex('recipe_detail').insert([
+      return knex('recipe_ingredients_detail').insert([
         {recipe_id: 1 , quantity: .75 , measurement_unit: 'cup', ingredient_id: 38},
         {recipe_id: 1 , quantity: 1 , measurement_unit: 'cup', ingredient_id: 5 },
         {recipe_id: 1 , quantity: 1 , measurement_unit: 'T', ingredient_id: 15 },
