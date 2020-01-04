@@ -1,7 +1,7 @@
 exports.up = function(knex) {
 	return knex.schema.createTable('instructions', tbl => {
 		tbl.increments();
-		
+		tbl.integer('step_number').notNullable();
 		tbl.string('instruction', 1000).notNullable();
 	});
 };
