@@ -2,13 +2,6 @@ exports.up = function(knex) {
 	return knex.schema.createTable('recipe_detail', tbl => {
 		tbl.increments();
 		tbl
-			.string('recipe_name', 255)
-			.notNullable()
-			.unique();
-		tbl.float('quantity', 255).notNullable();
-		tbl.string('measurement_unit', 255).notNullable();
-
-		tbl
 			.integer('recipe_id')
 			.unsigned()
 			.notNullable()
@@ -16,6 +9,10 @@ exports.up = function(knex) {
 			.inTable('recipes')
 			.onDelete('RESTRICT')
 			.onUpdate('CASCADE');
+			
+		tbl.float('quantity', 255).notNullable();
+		tbl.string('measurement_unit', 255).notNullable();
+
 		tbl
 			.integer('ingredient_id')
 			.unsigned()
