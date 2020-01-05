@@ -5,6 +5,7 @@ const authChefsRouter = require('../router/auth/authChefsRouter');
 const authUsersRouter = require('../router/auth/authUsersRouter');
 const recipesRouter = require('../router/recipesRouter');
 const ingredientsRouter = require('../router/ingredientsRouter');
+const instructionsRouter = require('../router/instructionsRouter');
 
 // Pull in custom middleware-----------------------------
 const restricted = require('../middleware/restricted');
@@ -14,6 +15,7 @@ router.use('/api/auth/chefs', validateAuth, authChefsRouter);
 router.use('/api/auth/users', validateAuth, authUsersRouter);
 router.use('/api/recipes', restricted, recipesRouter);
 router.use('/api/ingredients', restricted, ingredientsRouter);
+router.use('api/instructions', restricted, instructionsRouter);
 
 // Global test endpoint----------------------------------
 router.get('/', (req, res) => {
