@@ -61,7 +61,7 @@ router.put('/:id', validateId, (req, res) => {
 				recipesDb
 					.update(id, changes)
 					.then(recipeUpdate => {
-						res.status(200).json(recipeUpdate);
+						res.status(200).json({recipe_id: `${id}`, updated_recipe: `${changes.recipe_name}`, chef_id:`${changes.chef_id}`, recipeUpdate});
 					})
 					.catch(err => {
 						res

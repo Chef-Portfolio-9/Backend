@@ -64,7 +64,7 @@ router.put('/:id', validateId, (req, res) => {
 				ingredientsDb
 					.update(id, changes)
 					.then(ingredientUpdate => {
-						res.status(200).json(ingredientUpdate);
+						res.status(200).json({ingredient_id: `${id}`, updated_ingredient: `${changes.ingredient_name}`, ingredientUpdate});
 					})
 					.catch(err => {
 						res
@@ -90,7 +90,7 @@ router.delete('/:id', validateId,  (req, res) => {
 				.then(gone => {
 					res
 						.status(200)
-						.json({ message: `Ingredient id: ${id} was deleted.`, deletedIngredient });
+						.json({ message: 'Ingredient was deleted.', deletedIngredient });
 				})
 				.catch(err => {
 					res.status(500).json({ message: 'Error deleting the ingredient.', err });
