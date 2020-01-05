@@ -15,7 +15,7 @@ router.use('/api/auth/chefs', validateAuth, authChefsRouter);
 router.use('/api/auth/users', validateAuth, authUsersRouter);
 router.use('/api/recipes', restricted, recipesRouter);
 router.use('/api/ingredients', restricted, ingredientsRouter);
-router.use('api/instructions', restricted, instructionsRouter);
+router.use('/api/instructions', restricted, instructionsRouter);
 
 // Global test endpoint----------------------------------
 router.get('/', (req, res) => {
