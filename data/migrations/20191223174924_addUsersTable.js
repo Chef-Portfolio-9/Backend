@@ -7,14 +7,7 @@ exports.up = function(knex) {
 			.unique()
 			.notNullable();
 		tbl.string('password', 128).notNullable();
-		tbl
-			.integer('role_id')
-			.unsigned()
-			.notNullable()
-			.references('id')
-			.inTable('roles')
-			.onUpdate('CASCADE')
-			.onDelete('CASCADE');
+		
 		tbl
 			.integer('chef_id')
 			.unsigned()

@@ -10,14 +10,7 @@ exports.up = function(knex) {
 		tbl.string('full_name', 255).notNullable();
 		tbl.string('location', 255).notNullable();
 		tbl.string('restaurant', 255);
-		tbl
-			.integer('role_id')
-			.unsigned()
-			.notNullable()
-			.references('id')
-			.inTable('roles')
-			.onDelete('CASCADE')
-			.onUpdate('CASCADE');
+		
 	});
 };
 
