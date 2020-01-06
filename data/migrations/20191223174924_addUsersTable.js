@@ -14,21 +14,21 @@ exports.up = function(knex) {
 			.references('id')
 			.inTable('roles')
 			.onUpdate('CASCADE')
-			.onDelete('RESTRICT');
+			.onDelete('CASCADE');
 		tbl
 			.integer('chef_id')
 			.unsigned()
 			.references('id')
 			.inTable('chefs')
 			.onUpdate('CASCADE')
-			.onDelete('RESTRICT');
+			.onDelete('CASCADE');
 		tbl
 			.integer('recipe_id')
 			.unsigned()
 			.references('id')
 			.inTable('recipes')
 			.onUpdate('CASCADE')
-			.onDelete('RESTRICT');
+			.onDelete('CASCADE');
 	});
 };
 
