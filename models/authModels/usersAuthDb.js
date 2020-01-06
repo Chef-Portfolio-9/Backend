@@ -18,7 +18,7 @@ function getBy(username) {
 
 function add(user) {
 	return db('users')
-		.insert(user, 'id')
+		.insert(user)
 		.returning('id');
 }
 

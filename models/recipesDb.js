@@ -37,7 +37,8 @@ return db('recipes as r')
 
 function add(post) {
 return db('recipes')
-.insert(post, 'id')
+.insert(post)
+.returning('id')
 .then(ids => {
 return getById(ids[0]);
 });
