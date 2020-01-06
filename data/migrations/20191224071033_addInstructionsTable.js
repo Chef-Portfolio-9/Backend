@@ -8,7 +8,7 @@ exports.up = function(knex) {
 			.notNullable()
 			.references('id')
 			.inTable('recipes')
-			.onDelete('RESTRICT')
+			.onDelete('CASCADE')
 			.onUpdate('CASCADE');
 		tbl.integer('step_number').notNullable();
 		tbl.string('instruction', 1000).notNullable();

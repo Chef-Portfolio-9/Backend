@@ -13,7 +13,7 @@ exports.up = function(knex) {
 			.references('id')
 			.inTable('chefs')
 			.onUpdate('CASCADE')
-			.onDelete('RESTRICT');
+			.onDelete('CASCADE');
 	});
 };
 
