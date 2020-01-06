@@ -4,7 +4,7 @@ const router = require('express').Router();
 const guestDb = require('../models/guestDb');
 
 //Global GET
-router.get('/', (req, res) => {
+router.get('/dish/', (req, res) => {
     guestDb.get()
     .then(dish => {
         res.status(200).json(dish)
@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 });
 
 //GET by id
-router.get('/:id', validateRecipeId, (req, res) => {
+router.get('/dish/:id', validateRecipeId, (req, res) => {
     const id = req.params.id
 
     guestDb.getById(id)
@@ -28,7 +28,7 @@ router.get('/:id', validateRecipeId, (req, res) => {
 });
 
 //Global GET
-router.get('/', (req, res) => {
+router.get('/chef/', (req, res) => {
     guestDb.find()
     .then(chefs => {
         res.status(200).json(chefs)
@@ -39,7 +39,7 @@ router.get('/', (req, res) => {
 });
 
 //GET by id
-router.get('/:id', validateChefId, (req, res) => {
+router.get('/chef/:id', validateChefId, (req, res) => {
     const id =req.params.id
 
     guestDb.findBy(id)
