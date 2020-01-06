@@ -3,7 +3,6 @@ const router = require('express').Router();
 //Pull in knex helper models
 const recipesDb = require('../models/recipesDb');
 
-
 //Global GET
 router.get('/', (req, res) => {
 	recipesDb
@@ -34,6 +33,29 @@ router.get('/:id', validateId, (req, res) => {
 		});
 });
 
+// GET recipe instructions
+
+router.get('/:id/instructions', (req, res) => {
+	const id = req.params.id;
+
+	recipesDb
+		.findRecipeInstructions(id)
+		.then(steps => {
+			if (steps.length) {
+				res.status(200).json(steps);
+			} else {
+				res
+					.status(404)
+					.json({ message: 'Could not find the recipe instructions' });
+			}
+		})
+		.catch(err => {
+			res
+				.status(500)
+				.json({ message: 'Failed to get the recipe instructions', err });
+		});
+});
+
 //POST
 router.post('/', validatePost, (req, res) => {
 	const recipeData = req.body;
@@ -61,7 +83,14 @@ router.put('/:id', validateId, (req, res) => {
 				recipesDb
 					.update(id, changes)
 					.then(recipeUpdate => {
-						res.status(200).json({recipe_id: `${id}`, updated_recipe: `${changes.recipe_name}`, chef_id:`${changes.chef_id}`, recipeUpdate});
+						res
+							.status(200)
+							.json({
+								recipe_id: `${id}`,
+								updated_recipe: `${changes.recipe_name}`,
+								chef_id: `${changes.chef_id}`,
+								recipeUpdate
+							});
 					})
 					.catch(err => {
 						res
@@ -114,14 +143,13 @@ function validateId(req, res, next) {
 }
 
 function validatePost(req, res, next) {
-	const post = req.body
+	const post = req.body;
 
-	if(!post.recipe_name && !post.chef_id) {
-		res.status(400).json({message: 'Missing needed Post data!'})
+	if (!post.recipe_name && !post.chef_id) {
+		res.status(400).json({ message: 'Missing needed Post data!' });
 	} else {
-		next ();
+		next();
 	}
 }
-
 
 module.exports = router;
