@@ -7,7 +7,9 @@ exports.up = function(knex) {
 			.notNullable()
 			.unique();
 		tbl.string('password', 255).notNullable();
+		tbl.string('full_name', 255).notNullable();
 		tbl.string('location', 255).notNullable();
+		tbl.string('restaurant', 255);
 		tbl
 			.integer('role_id')
 			.unsigned()
