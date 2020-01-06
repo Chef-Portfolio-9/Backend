@@ -37,7 +37,7 @@ return db('recipes as r')
 
 function add(post) {
 return db('recipes')
-.insert(post)
+.insert(post, 'id')
 .then(ids => {
 return getById(ids[0]);
 });
@@ -46,7 +46,7 @@ return getById(ids[0]);
 function update(id, changes) {
 return db('recipes')
 .where({ id })
-.update(changes);
+.update(changes, 'id');
 }
 
 function remove(id) {

@@ -19,7 +19,7 @@ return db('ingredients')
 
 function add(post) {
 return db('ingredients')
-.insert(post)
+.insert(post, 'id')
 .then(ids => {
 return getById(ids[0]);
 });
@@ -28,7 +28,7 @@ return getById(ids[0]);
 function update(id, changes) {
 return db('ingredients')
 .where({ id })
-.update(changes);
+.update(changes, 'id');
 }
 
 function remove(id) {

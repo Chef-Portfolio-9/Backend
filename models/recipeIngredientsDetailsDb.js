@@ -27,7 +27,7 @@ return db('recipe_ingredients_detail as rid')
 
 function add(post) {
 return db('recipe_ingredients_detail')
-.insert(post)
+.insert(post, 'id')
 .then(ids => {
 return getById(ids[0]);
 });
@@ -36,7 +36,7 @@ return getById(ids[0]);
 function update(id, changes) {
 return db('recipe_ingredients_detail')
 .where({ id })
-.update(changes);
+.update(changes, 'id');
 }
 
 function remove(id) {
