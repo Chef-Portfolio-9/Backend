@@ -34,12 +34,11 @@ router.get('/:id', validateId, (req, res) => {
 });
 
 // GET recipe instructions
-
 router.get('/:id/instructions', (req, res) => {
 	const id = req.params.id;
 
 	recipesDb
-		.findRecipeInstructions(id)
+		.findInstructions(id)
 		.then(steps => {
 			if (steps.length) {
 				res.status(200).json(steps);
@@ -55,6 +54,28 @@ router.get('/:id/instructions', (req, res) => {
 				.json({ message: 'Failed to get the recipe instructions', err });
 		});
 });
+
+// GET recipe ingredients
+// router.get('/:id/ingredients', (req, res) => {
+// 	const id = req.params.id;
+
+// 	recipesDb
+// 		.findIngredients(id)
+// 		.then(ingredients => {
+// 			if (ingredients.length) {
+// 				res.status(200).json(ingredients);
+// 			} else {
+// 				res
+// 					.status(404)
+// 					.json({ message: 'Could not find the recipe ingredients.' });
+// 			}
+// 		})
+// 		.catch(err => {
+// 			res
+// 				.status(500)
+// 				.json({ message: 'Failed to get the recipe ingredients.', err });
+// 		});
+// });
 
 //POST
 router.post('/', validatePost, (req, res) => {
@@ -83,14 +104,12 @@ router.put('/:id', validateId, (req, res) => {
 				recipesDb
 					.update(id, changes)
 					.then(recipeUpdate => {
-						res
-							.status(200)
-							.json({
-								recipe_id: `${id}`,
-								updated_recipe: `${changes.recipe_name}`,
-								chef_id: `${changes.chef_id}`,
-								recipeUpdate
-							});
+						res.status(200).json({
+							recipe_id: `${id}`,
+							updated_recipe: `${changes.recipe_name}`,
+							chef_id: `${changes.chef_id}`,
+							recipeUpdate
+						});
 					})
 					.catch(err => {
 						res

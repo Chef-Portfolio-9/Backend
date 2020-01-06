@@ -2,7 +2,8 @@ const db = require('../data/dbConfig.js');
 module.exports = {
 get,
 getById,
-findRecipeInstructions,
+findInstructions,
+// findIngredients,
 add,
 update,
 remove,
@@ -18,13 +19,21 @@ return db('recipes')
 .first();
 }
 
-function findRecipeInstructions(recipe_id) {
+function findInstructions(recipe_id) {
 return db('recipes as r')
 .select( 'i.step_number', 'i.instruction' )
 .join('recipe_instructions as i', 'r.id', 'i.recipe_id' )
 .orderBy('i.step_number')
 .where('recipe_id', recipe_id)
 }
+
+// function findIngredients(recipe_id) {
+// return db('recipes as r')
+// .select('d.quantity', 'd.measurement_unit', 'i.ingredient_name' )
+// .join('recipe_ingredient_detail as d', 'r.id', 'd.recipe_id')
+// .join('ingredients as i', 'd.ingredient_id', 'i.id')
+// .where('recipe_id', recipe_id)
+// }
 
 function add(post) {
 return db('recipes')

@@ -2,6 +2,7 @@ const db = require('../data/dbConfig.js');
 module.exports = {
 get,
 getById,
+findIngredients,
 add,
 update,
 remove,
@@ -15,6 +16,13 @@ function getById(id) {
 return db('recipe_ingredients_detail')
 .where({ id })
 .first();
+}
+
+function findIngredients(recipe_id) {
+return db('recipe_ingredients_detail as rid')
+.select('rid.quantity', 'rid.measurement_unit', 'i.ingredient_name')
+.join('ingredients as i', 'rid.ingredient_id', 'i.id')
+.where('recipe_id', recipe_id)
 }
 
 function add(post) {
