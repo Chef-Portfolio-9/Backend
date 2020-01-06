@@ -2,6 +2,7 @@ const db = require('../data/dbConfig.js');
 module.exports = {
 get,
 getById,
+findRecipeInstructions,
 add,
 update,
 remove,
@@ -15,6 +16,14 @@ function getById(id) {
 return db('recipes')
 .where({ id })
 .first();
+}
+
+function findRecipeInstructions(recipe_id) {
+return db('recipes as r')
+.select('r.recipe_name', 'i.step_number', 'i.instruction' )
+.join('recipe_instructions as i', 'r.id', 'i.recipe_id' )
+.orderBy('i.step_number')
+.where('recipe_id', recipe_id)
 }
 
 function add(post) {
