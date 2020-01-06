@@ -7,19 +7,19 @@ module.exports = {
 };
 
 function get() {
-	return db('chefs').select('id', 'username', 'password', 'location');
+	return db('chefs').select('id', 'username', 'password', 'full_name', 'location', 'restaurant');
 }
 
 function getBy(username) {
 	return db('chefs')
-		.select('id', 'username', 'password', 'location', 'role_id')
+		.select('id', 'username', 'password', 'full_name', 'location', 'restaurant','role_id')
 		.where(username);
 }
 
 function add(user) {
 	return db('chefs')
-		.insert(user)
-		.returning('id');
+		.insert(user, 'id')
+		.returning('id', 'username', 'password', 'full_name', 'location', 'restaurant')
 }
 
 function findById(id) {
@@ -28,3 +28,4 @@ function findById(id) {
 		.where({ id })
 		.first();
 }
+
