@@ -92,3 +92,7 @@ _RESTRICTED EndPoints -  (must have JWT stored to authorization header in Local 
 - `POST /api/recipe_details/` - creates recipe details. MUST INCLUDE (recipe_id, quantity, measurement_unit, ingredient_id)
 - `PUT /api/recipe_details/:id` - updates a specific recipes details. Must have a change.
 - `DELETE /api/recipe_details/:id` - deletes a specific recipes details.
+
+## Guest endpoints
+
+- `GET /api/chef/` -returns a list of chefs
