@@ -19,7 +19,8 @@ return db('recipe_instructions')
 
 function add(post) {
 return db('recipe_instructions')
-.insert(post, 'id')
+.insert(post)
+.returning('id')
 .then(ids => {
 return getById(ids[0]);
 });
