@@ -27,18 +27,10 @@ return db('recipes as r')
 .where('recipe_id', recipe_id)
 }
 
-// function findIngredients(recipe_id) {
-// return db('recipes as r')
-// .select('d.quantity', 'd.measurement_unit', 'i.ingredient_name' )
-// .join('recipe_ingredient_detail as d', 'r.id', 'd.recipe_id')
-// .join('ingredients as i', 'd.ingredient_id', 'i.id')
-// .where('recipe_id', recipe_id)
-// }
 
 function add(post) {
 return db('recipes')
-.insert(post)
-.returning('id')
+.insert(post, 'id')
 .then(ids => {
 return getById(ids[0]);
 });
