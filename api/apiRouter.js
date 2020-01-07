@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 // Pull in Routers---------------------------------------
 const authChefsRouter = require('../router/auth/authChefsRouter');
-const chefsRouter = require('../router/chefRouter');
+const chefsRouter = require('../router/chefsRouter');
 const authUsersRouter = require('../router/auth/authUsersRouter');
 const recipesRouter = require('../router/recipesRouter');
 const ingredientsRouter = require('../router/ingredientsRouter');

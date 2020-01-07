@@ -1,5 +1,7 @@
 const router = require('express').Router();
 
+const bcrypt = require('bcryptjs');
+
 //Pull in knex helper models
 const chefsDb = require('../models/chefDb');
 
