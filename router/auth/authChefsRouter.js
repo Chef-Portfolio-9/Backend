@@ -23,7 +23,7 @@ router.post('/register', (req, res) => {
 		.add(user)
 		.then(stored => {
 			const token = signToken(user);
-			res.status(201).json({stored, token});
+			res.status(201).json({stored, token: token});
 		})
 		.catch(err => {
 			res.status(500).json(err);
