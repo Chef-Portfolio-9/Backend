@@ -18,8 +18,8 @@ router.get('/', (req, res) => {
 router.get('/:id', validateId, (req, res) => {
 	const id = req.params.id
 
-	chefsDb.getBy(id)
-	then(found => {
+	chefsDb.getById(id)
+	.then(found => {
 		res.status(200).json(found)
 	})
 	.catch(err => {
