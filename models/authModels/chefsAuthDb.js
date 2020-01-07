@@ -2,6 +2,7 @@ const db = require('../../data/dbConfig');
 module.exports = {
 	get,
 	getBy,
+	getById,
 	add,
 	update,
 	remove
@@ -17,6 +18,12 @@ function get() {
 		'restaurant'
 	);
 }
+
+function getById(id) {
+	return db('chefs')
+	.where({ id })
+	.first();
+	}
 
 function getBy(username) {
 	return db('chefs')
