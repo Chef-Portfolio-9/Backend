@@ -8,6 +8,9 @@ const signToken = require('../../JWT/signToken');
 //Pull in knex helper models
 const chefsDb = require('../../models/authModels/chefsAuthDb');
 
+
+
+// POST for registering a chef
 router.post('/register', (req, res) => {
 	// implement registration
 	let user = req.body;
@@ -27,6 +30,7 @@ router.post('/register', (req, res) => {
 		});
 });
 
+// POST for Login of a chef
 router.post('/login', (req, res) => {
 	// implement login
 	let { username, password } = req.body;
@@ -53,5 +57,7 @@ router.post('/login', (req, res) => {
 			res.status(500).json({ message: 'There was an error logging in', error });
 		});
 });
+
+
 
 module.exports = router;

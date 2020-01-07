@@ -2,6 +2,7 @@ const router = require('express').Router();
 
 // Pull in Routers---------------------------------------
 const authChefsRouter = require('../router/auth/authChefsRouter');
+const chefsRouter = require('../router/chefsRouter');
 const authUsersRouter = require('../router/auth/authUsersRouter');
 const recipesRouter = require('../router/recipesRouter');
 const ingredientsRouter = require('../router/ingredientsRouter');
@@ -14,6 +15,7 @@ const restricted = require('../middleware/restricted');
 const validateAuth = require('../middleware/validateAuth');
 
 router.use('/api/auth/chefs', validateAuth, authChefsRouter);
+router.use('/api/chefs', restricted, chefsRouter);
 router.use('/api/auth/users', validateAuth, authUsersRouter);
 router.use('/api/recipes', restricted, recipesRouter);
 router.use('/api/ingredients', restricted, ingredientsRouter);
