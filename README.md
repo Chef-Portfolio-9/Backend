@@ -100,5 +100,6 @@ _RESTRICTED EndPoints - (must have JWT stored to authorization header in Local S
 
 - `GET /api/chef/` - returns a list of chefs
 - `GET /api/chef/:id` - returns a specific chef
+- `GET /chef/:id/recipes` - returns a specific chef's list of recipes
 - `GET /api/dish/` - returns a list of recipes
 - `Get /api/dish/:id` - returns a specific recipe
