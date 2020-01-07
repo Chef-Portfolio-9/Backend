@@ -20,6 +20,7 @@ _RESTRICTED EndPoints - (must have JWT stored to authorization header in Local S
 
 - `GET /api/chefs/` - returns a list of all the chefs.
 - `GET /api/chefs/:id` - returns a specific chef by id.
+- `GET /api/chefs/:id/recipes` - returns a list of recipes for a specific chef.
 - `PUT /api/chefs/:id` - updates a specific chef, will hash a new password.
 - `DELETE /api/chefs/:id` - deletes a specific chef.
 
