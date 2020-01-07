@@ -12,7 +12,7 @@
 _Endpoints_
 
 - `POST /api/auth/chefs/register` - creates a chef account.
-- `POST /api/auth/chefs/login` - login for Chef, returns an id, role, and JWT.
+- `POST /api/auth/chefs/login` - login for Chef returns an id and JWT.
 
 ## Users Table
 
@@ -27,7 +27,7 @@ _Endpoints_
 _Endpoints_
 
 - `POST /api/auth/users/register` - creates a user account.
-- `POST /api/auth/users/login` - login for user, returns an id and JWT.
+- `POST /api/auth/users/login` - login for user returns an id and JWT.
 
 ## Recipes Table
 

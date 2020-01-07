@@ -12,7 +12,7 @@ function get() {
 
 function getBy(username) {
 	return db('chefs')
-		.select('id', 'username', 'password', 'full_name', 'location', 'restaurant','role_id')
+		.select('id', 'username', 'password', 'full_name', 'location', 'restaurant')
 		.where(username);
 }
 
