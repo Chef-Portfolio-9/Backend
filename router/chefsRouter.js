@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
 const chefsDb = require('../models/chefDb');
 
 // GET global for gathering the chefs
+
 router.get('/', (req, res) => {
 	chefsDb.get()
 	.then(chefs => {
@@ -17,6 +18,7 @@ router.get('/', (req, res) => {
 });
 
 // GET for grabbing a specific chef
+
 router.get('/:id', validateId, (req, res) => {
 	const id = req.params.id
 
@@ -28,6 +30,27 @@ router.get('/:id', validateId, (req, res) => {
 		res.status(500).json({message: 'Error getting that chef.', err})
 	})
 });
+
+// GET by id for recipes
+
+router.get('/:id/recipes', (req, res) => {
+	const id = req.params.id;
+
+	chefsDb
+		.findRecipes(id)
+		.then(dishes => {
+			if (dishes.length) {
+				res.status(200).json(dishes);
+			} else {
+				res.status(404).json({ message: 'Could not find the Chefs recipes. ' });
+			}
+		})
+		.catch(err => {
+			res.status(500).json({ message: 'Failed to get the chefs recipes', err });
+		});
+});
+
+// PUT for updating a chef
 
 router.put('/:id', validateId, (req, res) => {
 	const id = req.params.id
@@ -68,6 +91,7 @@ router.put('/:id', validateId, (req, res) => {
 	}
 });
 
+// DELETE for deleting a chef
 router.delete('/:id', validateId, (req, res) => {
 	const id = req.params.id;
 
