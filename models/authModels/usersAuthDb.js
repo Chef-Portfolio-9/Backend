@@ -1,14 +1,14 @@
 const db = require('../../data/dbConfig');
 module.exports = {
-	get,
+	// get,
 	getBy,
-	add,
-	findById
+	add
+	// findById
 };
 
-function get() {
-	return db('users').select('id', 'username', 'password');
-}
+// function get() {
+// 	return db('users').select('id', 'username', 'password');
+// }
 
 function getBy(username) {
 	return db('users')
@@ -22,9 +22,9 @@ function add(user) {
 		.returning('id');
 }
 
-function findById(id) {
-	return db('users')
-		.select('id', 'username')
-		.where({ id })
-		.first();
-}
+// function findById(id) {
+// 	return db('users')
+// 		.select('id', 'username')
+// 		.where({ id })
+// 		.first();
+// }

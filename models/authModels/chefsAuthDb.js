@@ -1,18 +1,18 @@
 const db = require('../../data/dbConfig');
 module.exports = {
-	get,
+	// get,
 	getBy,
-	add,
-	findById
+	add
+	// findById
 };
 
-function get() {
-	return db('chefs').select('id', 'username', 'password', 'full_name', 'location', 'restaurant');
-}
+// function get() {
+// 	return db('chefs').select('id', 'username', 'password', 'full_name', 'location', 'restaurant');
+// }
 
 function getBy(username) {
 	return db('chefs')
-		.select('id', 'username', 'password', 'full_name', 'location', 'restaurant','role_id')
+		.select('id', 'username', 'password', 'full_name', 'location', 'restaurant')
 		.where(username);
 }
 
@@ -22,10 +22,10 @@ function add(user) {
 		.returning('id', 'username', 'password', 'full_name', 'location', 'restaurant')
 }
 
-function findById(id) {
-	return db('chefs')
-		.select('id', 'username')
-		.where({ id })
-		.first();
-}
+// function findById(id) {
+// 	return db('chefs')
+// 		.select('id', 'username')
+// 		.where({ id })
+// 		.first();
+// }
 

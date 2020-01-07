@@ -3,7 +3,8 @@ module.exports = {
 	get,
 	getById,
 	find,
-	findBy
+	findBy,
+	findRecipes
 };
 
 function get() {
@@ -24,4 +25,11 @@ function findBy(id) {
 	return db('chefs')
 		.where({ id })
 		.first();
+}
+
+function findRecipes(chef_id) {
+	return db('chefs as c')
+	.select('c.full_name', 'c.location', 'c.restaurant', 'r.recipe_name')
+	.join('recipes as r', 'c.id', 'r.chef_id')
+	.where('chef_id', chef_id)
 }
