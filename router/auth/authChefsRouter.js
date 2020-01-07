@@ -19,7 +19,8 @@ router.post('/register', (req, res) => {
 	chefsDb
 		.add(user)
 		.then(stored => {
-			res.status(201).json(stored);
+			const token = signToken(user);
+			res.status(201).json({stored, token});
 		})
 		.catch(err => {
 			res.status(500).json(err);
