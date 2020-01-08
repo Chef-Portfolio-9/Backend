@@ -4,7 +4,7 @@ const server = require('../../api/server');
 
 const db = require('../../data/dbConfig');
 
-describe('authChefRouter', function() {
+describe('authChefsRouter', function() {
 	// environment test---------------------------------------
 	describe('environment', function() {
 		it('should set environment to testing', function() {
