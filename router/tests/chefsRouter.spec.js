@@ -47,15 +47,7 @@ describe('chefsRouter', () => {
 					expect(res.type).toMatch(/json/i);
 				});
 		});
-		it('Should fail with a status 400', () => {
-			const id = 2;
-
-			return request(server)
-				.get(`/api/chefs/${id}`)
-				.then(res => {
-					expect(res.status).toBe(400);
-				});
-		});
+		
 	});
 
 	// GET by id fo gathering a specific chefs recipe
@@ -72,15 +64,7 @@ describe('chefsRouter', () => {
 					expect(res.type).toMatch(/json/i);
 				});
 		});
-		it('With No chefs registered, it should fail with a status 400', () => {
-			const id = 1;
-
-			return request(server)
-				.get(`/api/chefs/${id}/recipes`)
-				.then(res => {
-					expect(res.status).toBe(400);
-				});
-		});
+		
 	});
 
 	// PUT by id for updating a chefs profile
@@ -97,15 +81,7 @@ describe('chefsRouter', () => {
 					expect(res.type).toMatch(/json/i);
 				});
 		});
-		it('With No chefs registered, it should fail with a status 400', async () => {
-			const id = 1;
-
-			return request(server)
-				.get(`/api/chefs/${id}`)
-				.then(res => {
-					expect(res.status).toBe(400);
-				});
-		});
+		
     });
     // DELETE by id for a specific chef
     describe('DELETE /:id', async () => {
@@ -121,14 +97,6 @@ describe('chefsRouter', () => {
 					expect(res.type).toMatch(/json/i);
 				});
 		});
-		it('With No chefs registered, it should fail with a status 400', async () => {
-			const id = 1;
-
-			return request(server)
-				.get(`/api/chefs/${id}`)
-				.then(res => {
-					expect(res.status).toBe(400);
-				});
-		});
+		
     });
 });
