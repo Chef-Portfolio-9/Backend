@@ -4,27 +4,27 @@ const server = require('../../api/server');
 
 const db = require('../../data/dbConfig');
 
-describe('chefsRouter', function() {
+describe('chefsRouter', () => {
 	// environment test----------------------------
-	describe('environment', function() {
-		it('should set environment to testing', function() {
+	describe('environment', () => {
+		it('should set environment to testing', () => {
 			expect(process.env.DB_ENV).toBe('testing');
 		});
 	});
 
 	// Global GET for gathering all the chefs
-	describe('GET /', function() {
-		beforeEach(async function() {
+	describe('GET /', () => {
+		beforeEach(async () => {
 			await db('chefs').truncate();
 		});
-		it('should return a json', function() {
+		it('should return a json', () => {
 			return request(server)
 				.get('/api/chefs/')
 				.then(res => {
 					expect(res.type).toMatch(/json/i);
 				});
 		});
-		it('Empty Chefs table should return with a status 400', async function() {
+		it('Empty Chefs table should return with a status 400', async () => {
 			return request(server)
 				.get('/api/chefs/')
 				.then(res => {
@@ -34,11 +34,11 @@ describe('chefsRouter', function() {
 	});
 
 	// GET by id for gathering a specific chef
-	describe('GET /:id', function() {
-		beforeEach(async function() {
+	describe('GET /:id', () => {
+		beforeEach(async () => {
 			await db('chefs').truncate();
 		});
-		it('should return a json', function() {
+		it('should return a json', () => {
 			const id = 2;
 
 			return request(server)
@@ -47,7 +47,7 @@ describe('chefsRouter', function() {
 					expect(res.type).toMatch(/json/i);
 				});
 		});
-		it('Should fail with a status 400', function() {
+		it('Should fail with a status 400', () => {
 			const id = 2;
 
 			return request(server)
@@ -59,11 +59,11 @@ describe('chefsRouter', function() {
 	});
 
 	// GET by id fo gathering a specific chefs recipe
-	describe('GET /:id/recipes', function() {
-		beforeEach(async function() {
+	describe('GET /:id/recipes', () => {
+		beforeEach(async () => {
 			await db('chefs').truncate();
 		});
-		it('should return a json', function() {
+		it('should return a json', () => {
 			const id = 2;
 
 			return request(server)
@@ -72,7 +72,7 @@ describe('chefsRouter', function() {
 					expect(res.type).toMatch(/json/i);
 				});
 		});
-		it('With No chefs registered, it should fail with a status 400', function() {
+		it('With No chefs registered, it should fail with a status 400', () => {
 			const id = 1;
 
 			return request(server)
@@ -84,11 +84,11 @@ describe('chefsRouter', function() {
 	});
 
 	// PUT by id for updating a chefs profile
-	describe('PUT /:id', async function() {
-		beforeEach(async function() {
+	describe('PUT /:id', async () => {
+		beforeEach(async () => {
 			await db('chefs').truncate();
         });
-        it('should return a json', async function() {
+        it('should return a json', async () => {
 			const id = 2;
 
 			return request(server)
@@ -97,7 +97,7 @@ describe('chefsRouter', function() {
 					expect(res.type).toMatch(/json/i);
 				});
 		});
-		it('With No chefs registered, it should fail with a status 400', async function() {
+		it('With No chefs registered, it should fail with a status 400', async () => {
 			const id = 1;
 
 			return request(server)
@@ -108,11 +108,11 @@ describe('chefsRouter', function() {
 		});
     });
     // DELETE by id for a specific chef
-    describe('DELETE /:id', async function() {
-		beforeEach(async function() {
+    describe('DELETE /:id', async () => {
+		beforeEach(async () => {
 			await db('chefs').truncate();
         });
-        it('should return a json', async function() {
+        it('should return a json', async () => {
 			const id = 2;
 
 			return request(server)
@@ -121,7 +121,7 @@ describe('chefsRouter', function() {
 					expect(res.type).toMatch(/json/i);
 				});
 		});
-		it('With No chefs registered, it should fail with a status 400', async function() {
+		it('With No chefs registered, it should fail with a status 400', async () => {
 			const id = 1;
 
 			return request(server)
