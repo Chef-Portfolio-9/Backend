@@ -4,29 +4,21 @@ const server = require('../../api/server');
 
 const db = require('../../data/dbConfig');
 
-describe('authChefRouter', function() {
+describe('authChefsRouter', () => {
 	// environment test---------------------------------------
-	describe('environment', function() {
-		it('should set environment to testing', function() {
+	describe('environment', () => {
+		it('should set environment to testing', () => {
 			expect(process.env.DB_ENV).toBe('testing');
 		});
-    });
-    
+	});
+
 	//REGISTER/LOGIN POST tests-----------------------------------
-	describe('Post ', function() {
-		beforeEach(async function() {
+	describe('Post ', () => {
+		beforeEach(async () => {
 			await db('chefs').truncate();
 		});
-		describe('Register chef', function() {
-			it('should return a 201 ok', function() {
-				return request(server)
-					.post('/api/auth/chefs/register')
-					.send({ username: 'Duncan', password: 'Taiwan' })
-					.then(res => {
-						expect(res.status).toBe(201);
-					});
-			});
-			it('should return with json', function() {
+		describe('Register chef', () => {
+			it('should return with json', () => {
 				return request(server)
 					.post('/api/auth/chefs/register')
 					.send({ username: 'Justin', password: 'Giants' })
@@ -35,8 +27,8 @@ describe('authChefRouter', function() {
 					});
 			});
 		});
-		describe('Login chef', function() {
-			it('Login Should fail with 401 when bcryptCompare has wrong password', function() {
+		describe('Login chef', () => {
+			it('Login Should fail with 401 when bcryptCompare has wrong password', () => {
 				return request(server)
 					.post('/api/auth/chefs/login')
 					.send({ username: 'Jeremy', password: 'Kumquat' })
@@ -44,7 +36,7 @@ describe('authChefRouter', function() {
 						expect(res.status).toBe(401);
 					});
 			});
-			it('should return json', function() {
+			it('should return json', () => {
 				return request(server)
 					.post('/api/auth/chefs/login')
 					.send({ username: 'Jeremy', password: 'Bear' })
