@@ -28,7 +28,6 @@ return db('recipe_ingredients_detail as rid')
 function add(post) {
 return db('recipe_ingredients_detail')
 .insert(post, 'id')
-.returning('id')
 .then(ids => {
 return getById(ids[0]);
 });

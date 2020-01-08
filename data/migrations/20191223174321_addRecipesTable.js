@@ -1,7 +1,7 @@
 exports.up = function(knex) {
 	return knex.schema.createTable('recipes', tbl => {
 		tbl.increments();
-
+		tbl.binary('recipe_img').notNullable();
 		tbl
 			.string('recipe_name', 255)
 			.notNullable()
@@ -14,6 +14,7 @@ exports.up = function(knex) {
 			.inTable('chefs')
 			.onUpdate('CASCADE')
 			.onDelete('CASCADE');
+		tbl.string('meal_type', 255).notNullable();
 	});
 };
 

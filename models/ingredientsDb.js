@@ -19,8 +19,7 @@ return db('ingredients')
 
 function add(post) {
 return db('ingredients')
-.insert(post)
-.returning('id')
+.insert(post, 'id')
 .then(ids => {
 return getById(ids[0]);
 });
