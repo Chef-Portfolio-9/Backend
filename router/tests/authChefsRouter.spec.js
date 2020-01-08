@@ -21,7 +21,7 @@ describe('authChefRouter', function() {
 			it('should return a 201 ok', function() {
 				return request(server)
 					.post('/api/auth/chefs/register')
-					.send({ username: 'Jeremy', password: 'Bear' })
+					.send({ username: 'Duncan', password: 'Taiwan' })
 					.then(res => {
 						expect(res.status).toBe(201);
 					});
