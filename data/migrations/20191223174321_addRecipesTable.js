@@ -1,7 +1,7 @@
 exports.up = function(knex) {
 	return knex.schema.createTable('recipes', tbl => {
 		tbl.increments();
-		tbl.blob('recipe_img').notNullable();
+		tbl.binary('recipe_img').notNullable();
 		tbl
 			.string('recipe_name', 255)
 			.notNullable()

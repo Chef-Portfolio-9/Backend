@@ -10,7 +10,7 @@ exports.up = function(knex) {
 		tbl.string('full_name', 255).notNullable();
 		tbl.string('location', 255).notNullable();
 		tbl.string('restaurant', 255);
-		tbl.blob('chef_img');
+		tbl.binary('chef_img');
 	});
 };
 
