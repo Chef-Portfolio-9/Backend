@@ -6,7 +6,7 @@ describe('chefsAuthDb', function() {
 		await db('chefs').truncate();
 	});
 	describe('getBy', () => {
-		it('data model should contain certain fields', async () => {
+		it('data model should contain certain equal fields and values', async () => {
 			await Chefs.add({
 				username: 'Jeremy',
 				password: 'Bear',

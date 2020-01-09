@@ -2,6 +2,7 @@ const db = require('../data/dbConfig');
 module.exports = {
 	get,
 	getById,
+	add,
 	findRecipes,
 	update,
 	remove
@@ -23,6 +24,13 @@ function getById(id) {
 		.where({ id })
 		.first();
 }
+function add(post) {
+	return db('chefs')
+	.insert(post, 'id')
+	.then(ids => {
+	return getById(ids[0]);
+	});
+	}
 
 function findRecipes(chef_id) {
 	return db('chefs as c')
