@@ -56,27 +56,64 @@ describe('chefDb', () => {
 			expect(cooks).toMatchObject(chef);
 		});
 	});
-	describe('update', async () => {
-		it('should update a specific chef', async () => {
+	describe('add', async () => {
+		it('should add a chef to the Db', async () => {
 			await Chefs.add({
 				username: 'Jeremy',
 				password: 'Bear',
 				full_name: 'Jeremy_McWilliams',
 				location: 'Dublin'
 			});
-			
+			await Chefs.add({
+				username: 'Justin',
+				password: 'Giants',
+				full_name: 'Justin_Deering',
+				location: 'SanFrancisco',
+				restaurant: 'Scalas'
+			});
+			await Chefs.add({
+				username: 'Neil',
+				password: 'Grace',
+				full_name: 'Neil_Frasier',
+				location: 'LosAngeles',
+				restaurant: 'Redbird'
+			});
+			const cooks = await db('chefs');
+			expect(cooks).toHaveLength(3);
+		})
+	})
+	describe('update', async () => {
+		it('should update a specific chef', async () => {
+			const kitchen = [
+				{
+					full_name: 'Jeremy_McWilliams',
+					id: 1,
+					location: 'Alameda',
+					password: 'Bear',
+					restaurant: null,
+					username: 'Jeremy'
+				}
+			];
+
+			await Chefs.add({
+				username: 'Jeremy',
+				password: 'Bear',
+				full_name: 'Jeremy_McWilliams',
+				location: 'Dublin'
+			});
+
 			await Chefs.update(1, {
-			username: 'Jeremy',
-			password: 'Bear',
-			full_name: 'Jeremy_McWilliams',
-			location: 'Alameda'
+				username: 'Jeremy',
+				password: 'Bear',
+				full_name: 'Jeremy_McWilliams',
+				location: 'Alameda'
 			});
 
 			const cooks = await db('chefs');
-			expect(cooks).toBe([{"full_name": "Jeremy_McWilliams", "id": 1, "location": "Alameda", "password": "Bear", "restaurant": null, "username": "Jeremy"}]);
-			})
-	})
-	
+			expect(cooks).toEqual(kitchen);
+		});
+	});
+
 	describe('remove', async () => {
 		it('should remove a chef and return an empty array', async () => {
 			await Chefs.add({
@@ -85,9 +122,9 @@ describe('chefDb', () => {
 				full_name: 'Jeremy_McWilliams',
 				location: 'Dublin'
 			});
-			await Chefs.remove(1)
+			await Chefs.remove(1);
 			const cooks = await db('chefs');
-			expect(cooks).toMatchObject([])
-		})
-	})
+			expect(cooks).toMatchObject([]);
+		});
+	});
 });
