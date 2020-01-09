@@ -66,7 +66,7 @@ router.get('/chef/:id/recipes', (req, res) => {
 			if (dishes.length) {
 				res.status(200).json(dishes);
 			} else {
-				res.status(404).json({ message: 'Could not find the Chefs recipes. ' });
+				res.status(404).json({ message: 'Chefs recipes not found. ' });
 			}
 		})
 		.catch(err => {
@@ -85,7 +85,7 @@ function validateRecipeId(req, res, next) {
 			next();
 		})
 		.catch(err => {
-			res.status(404).json({ message: 'Invalid recipe id!', err });
+			res.status(404).json({ message: 'recipe id not found!', err });
 		});
 }
 
@@ -98,7 +98,7 @@ function validateChefId(req, res, next) {
 			next();
 		})
 		.catch(err => {
-			res.status(404).json({ message: 'Invalid chef id.', err });
+			res.status(404).json({ message: 'chef id not found.', err });
 		});
 }
 module.exports = router;
