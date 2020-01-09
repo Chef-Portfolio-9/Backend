@@ -1,5 +1,5 @@
 const Chefs = require('../chefDb');
-// const Recipes = require('../recipesDb');
+
 const db = require('../../data/dbConfig');
 
 describe('chefDb', () => {
@@ -99,7 +99,7 @@ describe('chefDb', () => {
 				username: 'Jeremy',
 				password: 'Bear',
 				full_name: 'Jeremy_McWilliams',
-				location: 'Dublin'
+				location: 'Dublin',
 			});
 
 			await Chefs.update(1, {

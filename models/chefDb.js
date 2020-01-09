@@ -34,7 +34,7 @@ function add(post) {
 
 function findRecipes(chef_id) {
 	return db('chefs as c')
-		.select('c.full_name', 'c.location', 'c.restaurant', 'r.recipe_name')
+		.select('c.full_name', 'c.location', 'c.restaurant', 'r.recipe_name', 'r.id')
 		.join('recipes as r', 'c.id', 'r.chef_id')
 		.where('chef_id', chef_id);
 }
