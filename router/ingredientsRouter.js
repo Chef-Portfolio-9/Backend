@@ -113,7 +113,7 @@ function validateId(req, res, next) {
 			next();
 		})
 		.catch(err => {
-			res.status(404).json({ message: 'Invalid ingredient id!', err });
+			res.status(404).json({ message: 'Ingredient id not found!', err });
 		});
 }
 

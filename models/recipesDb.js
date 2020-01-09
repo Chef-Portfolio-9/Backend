@@ -3,7 +3,6 @@ module.exports = {
 get,
 getById,
 findInstructions,
-// findIngredients,
 add,
 update,
 remove,

@@ -1,4 +1,29 @@
-# Backend
+# Chef Portfolio Backend
+## Jeremy McWilliams
+
+j2macwilliams.com
+
+## Pitch
+As a food blogger, I want to be able to show off my work and recipes. I have a lot of amazing pics from the recipes i’ve created I'd like to share with potential clients, but I need a site that is more professional than Instagram in order to do so. I don’t have time or skills to build my own unique website, I need a site that provides templates so I can just input some information and be done.
+
+## Back End API
+chefprtfolio.herokuapp.com/
+
+## Tech Stack
+- node.js
+- express
+- knex
+- sqlite3
+- pg
+- cors
+- helmet
+- jsonwebtoken
+- nodemon
+- dotenv
+- supertest
+- cross-env
+- jest
+
 
 ## Chefs Table
 

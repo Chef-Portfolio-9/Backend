@@ -32,7 +32,7 @@ router.get('/:id', validateId, (req, res) => {
 });
 
 // GET by id for finding recipe ingredients
-router.get('/:id/ingredients', (req, res) => {
+router.get('/:id/ingredients', validateId, (req, res) => {
 	const id = req.params.id;
 
 	recipeDetailsDb
@@ -43,7 +43,7 @@ router.get('/:id/ingredients', (req, res) => {
 			} else {
 				res
 					.status(404)
-					.json({ message: 'Could not find the recipe ingredients' });
+					.json({ message: 'Recipe ingredients not found!' });
 			}
 		})
 		.catch(err => {
@@ -151,7 +151,7 @@ function validateId(req, res, next) {
 			next();
 		})
 		.catch(err => {
-			res.status(404).json({ message: 'Invalid recipe details id!', err });
+			res.status(404).json({ message: 'Recipe details id not found!', err });
 		});
 }
 

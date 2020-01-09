@@ -45,7 +45,7 @@ router.get('/:id/instructions', (req, res) => {
 			} else {
 				res
 					.status(404)
-					.json({ message: 'Could not find the recipe instructions' });
+					.json({ message: 'Recipe instructions not found' });
 			}
 		})
 		.catch(err => {
@@ -74,7 +74,7 @@ router.put('/:id', validateId, (req, res) => {
 	const id = req.params.id;
 	const changes = req.body;
 
-	if (!changes) {
+	if (!changes.recipe_name || !changes.chef_id || !changes.meal_type) {
 		res.status(400).json({ message: 'Please submit a change to the recipe.' });
 	} else {
 		recipesDb
@@ -136,14 +136,14 @@ function validateId(req, res, next) {
 			next();
 		})
 		.catch(err => {
-			res.status(404).json({ message: 'Invalid recipe id!', err });
+			res.status(404).json({ message: 'Recipe id not found!', err });
 		});
 }
 
 function validatePost(req, res, next) {
 	const post = req.body;
 
-	if (!post.recipe_name && !post.chef_id) {
+	if (!post.recipe_name && !post.chef_id && !post.meal_type) {
 		res.status(400).json({ message: 'Missing needed Post data!' });
 	} else {
 		next();
