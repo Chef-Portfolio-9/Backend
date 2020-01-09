@@ -35,11 +35,12 @@ describe('chefDb', () => {
 		it('should return a specific chef', async () => {
 			const chef = [
 				{
-					id: 1,
-					username: 'Jeremy',
-					password: 'Bear',
 					full_name: 'Jeremy_McWilliams',
-					location: 'Dublin'
+					id: 1,
+					location: 'Dublin',
+					password: 'Bear',
+					restaurant: null,
+					username: 'Jeremy'
 				}
 			];
 
@@ -55,22 +56,4 @@ describe('chefDb', () => {
 			expect(cooks).toMatchObject(chef);
 		});
 	});
-	// describe('findRecipes', async () => {
-	// 	it('should contain recipe_name', async () => {
-	// 		await Recipes.add({
-	// 			recipe_name: 'Beet and Burrata Salad',
-	// 			chef_id: 1
-				
-	// 		});
-	// 		await Chefs.add({
-	// 			username: 'Jeremy',
-	// 			password: 'Bear',
-	// 			full_name: 'Jeremy_McWilliams',
-	// 			location: 'Dublin'
-    //         });
-    //         await Chefs.findRecipes(1)
-    //         const cooks = await db('chefs')
-    //         expect({recipe_name: 'Beet and Burrata Salad'}).toBe(cooks)
-	// 	});
-	// });
 });
