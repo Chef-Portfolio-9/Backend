@@ -97,7 +97,7 @@ router.put('/:id', validateId, (req, res) => {
 					});
 			})
 			.catch(err => {
-				res.status(500).json({ message: ' Error finding that recipe!', err });
+				res.status(404).json({ message: ' recipe not found !', err });
 			});
 	}
 });
@@ -121,7 +121,7 @@ router.delete('/:id', validateId, (req, res) => {
 				});
 		})
 		.catch(err => {
-			res.status(500).json({ message: 'Error finding that recipe.', err });
+			res.status(404).json({ message: 'recipe not found.', err });
 		});
 });
 
