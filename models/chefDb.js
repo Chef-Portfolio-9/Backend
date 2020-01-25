@@ -9,14 +9,16 @@ module.exports = {
 };
 
 function get() {
-	return db('chefs').select(
-		'id',
-		'username',
-		'password',
-		'full_name',
-		'location',
-		'restaurant'
-	);
+	return db('chefs')
+	// .select(
+	// 	'id',
+	// 	'username',
+	// 	'password',
+	// 	'full_name',
+	// 	'location',
+	// 	'restaurant'
+	// )
+	;
 }
 
 function getById(id) {
