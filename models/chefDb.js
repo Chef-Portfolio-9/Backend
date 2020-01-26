@@ -1,5 +1,6 @@
 const db = require('../data/dbConfig');
 module.exports = {
+	find,
 	get,
 	getById,
 	add,
@@ -8,18 +9,13 @@ module.exports = {
 	remove
 };
 
-function get() {
-	return db('chefs')
-	// .select(
-	// 	'id',
-	// 	'username',
-	// 	'password',
-	// 	'full_name',
-	// 	'location',
-	// 	'restaurant'
-	// )
-	;
+function find() {
+	return db('chefs');
 }
+
+function get() {
+	return db('chefs');
+	}
 
 function getById(id) {
 	return db('chefs')

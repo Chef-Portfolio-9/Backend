@@ -8,27 +8,29 @@ const chefsDb = require('../models/chefDb');
 // GET global for gathering the chefs
 
 router.get('/', (req, res) => {
-	chefsDb.get()
-	.then(chefs => {
-		res.status(200).json(chefs)
-	})
-	.then(err => {
-		res.status(500).json({message: 'Error getting the chefs.', err})
-	})
+	chefsDb
+		.get()
+		.then(chefs => {
+			res.status(200).json(chefs);
+		})
+		.then(err => {
+			res.status(500).json({ message: 'Error getting the chefs.', err });
+		});
 });
 
 // GET for grabbing a specific chef
 
 router.get('/:id', validateId, (req, res) => {
-	const id = req.params.id
+	const id = req.params.id;
 
-	chefsDb.getById(id)
-	.then(found => {
-		res.status(200).json(found)
-	})
-	.catch(err => {
-		res.status(500).json({message: 'Error getting that chef.', err})
-	})
+	chefsDb
+		.getById(id)
+		.then(found => {
+			res.status(200).json(found);
+		})
+		.catch(err => {
+			res.status(500).json({ message: 'Error getting that chef.', err });
+		});
 });
 
 // GET by id for recipes
@@ -53,14 +55,20 @@ router.get('/:id/recipes', (req, res) => {
 // PUT for updating a chef
 
 router.put('/:id', validateId, (req, res) => {
-	const id = req.params.id
-	const changes = req.body
+	const id = req.params.id;
+	const changes = req.body;
 
 	const hash = bcrypt.hashSync(changes.password, 8);
 
 	changes.password = hash;
 
-	if (!changes.username || !changes.password || !changes.full_name || !changes.location || !changes.restaurant) {
+	if (
+		!changes.username ||
+		!changes.password ||
+		!changes.full_name ||
+		!changes.location ||
+		!changes.restaurant
+	) {
 		res.status(400).json({ message: 'Please submit a change to the recipe.' });
 	} else {
 		chefsDb
@@ -80,9 +88,7 @@ router.put('/:id', validateId, (req, res) => {
 						});
 					})
 					.catch(err => {
-						res
-							.status(500)
-							.json({ message: 'Error updating that chef!', err });
+						res.status(500).json({ message: 'Error updating that chef!', err });
 					});
 			})
 			.catch(err => {
