@@ -3,8 +3,8 @@
 
 |  [Jeremy J McWilliams](https://jeremyjmcwilliams.com)|
 | :---------------------------------------------------: |
-[<img src="./assets/jeremy-mcwilliams.jpg" width = "200" />](https://github.com/J2Macwilliams)   
- </br>Full Stack Developer
+| [<img src="./assets/jeremy-mcwilliams.jpg" width = "200" />](https://github.com/J2Macwilliams)   |
+|Full Stack Developer |
 | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/J2Macwilliams)   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jeremyjmcwilliams/) | 
 
 
