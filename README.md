@@ -1,5 +1,9 @@
 # Chef Portfolio Backend
-## Jeremy McWilliams
+
+|  [Jeremy McWilliams](https://github.com/J2Macwilliams)|
+| :---------------------------------------------------: |
+[<img src="./assets/jeremy-mcwilliams.jpg" width = "200" />](https://github.com/J2Macwilliams)    </br>Full Stack Web Developer
+| [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/J2Macwilliams)   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jeremyjmcwilliams/) | 
 
 j2macwilliams.com
 
