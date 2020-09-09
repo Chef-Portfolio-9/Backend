@@ -1,13 +1,12 @@
 # Chef Portfolio Backend
 
-|  [Jeremy McWilliams](https://github.com/J2Macwilliams)|
-|  [jeremyjmcwilliams.com](https://jeremyjmcwilliams.com)|
+
+|  [Jeremy J McWilliams](https://jeremyjmcwilliams.com)|
 | :---------------------------------------------------: |
 [<img src="./assets/jeremy-mcwilliams.jpg" width = "200" />](https://github.com/J2Macwilliams)   
  </br>Full Stack Developer
 | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/J2Macwilliams)   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jeremyjmcwilliams/) | 
 
-j2macwilliams.com
 
 ## Pitch
 As a food blogger, I want to be able to show off my work and recipes. I have a lot of amazing pics from the recipes i’ve created I'd like to share with potential clients, but I need a site that is more professional than Instagram in order to do so. I don’t have time or skills to build my own unique website, I need a site that provides templates so I can just input some information and be done.
